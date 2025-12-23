@@ -45,7 +45,9 @@ class Handler:
         self._load_model()
 
     def _load_model(self):
-        model_id = "/models/Wan2.1-I2V-14B-720P-Diffusers"
+        # Match the path logic in builder.py
+        base_dir = os.environ.get("HF_HOME", "/models")
+        model_id = os.path.join(base_dir, "Wan2.1-I2V-14B-720P-Diffusers")
         print(f"Loading model from {model_id}...")
         
         self.pipe = WanI2VPipeline.from_pretrained(

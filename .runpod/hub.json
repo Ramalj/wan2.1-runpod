@@ -6,7 +6,7 @@
     "iconUrl": "https://example.com/icon.png",
     "config": {
         "runsOn": "GPU",
-        "containerDiskInGb": 20,
+        "containerDiskInGb": 120,
         "presets": [
             {
                 "name": "Preset 1",

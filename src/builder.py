@@ -3,22 +3,25 @@ import os
 
 def download_model():
     model_id = "Wan-AI/Wan2.1-I2V-14B-720P-Diffusers"
-    local_dir = "/models/Wan2.1-I2V-14B-720P-Diffusers"
+    # Use HF_HOME or default to /models if not set
+    local_dir = os.environ.get("HF_HOME", "/models")
     
-    if os.path.exists(local_dir):
-        print(f"Model directory {local_dir} already exists. checking for completeness...", flush=True)
-        # In a real scenario we might want to verify, but for now we assume existence is enough for a cache hit
-        # dependent on persistence. If it's empty, huggingface_hub handles correct resuming.
+    # We want nested folder for the specific model if we are using HF_HOME as base
+    target_dir = os.path.join(local_dir, "Wan2.1-I2V-14B-720P-Diffusers")
     
-    print(f"Downloading {model_id} to {local_dir}...", flush=True)
+    if os.path.exists(target_dir) and any(os.scandir(target_dir)):
+        print(f"Model already exists in {target_dir}. Checking for updates/completeness...", flush=True)
+    else:
+        print(f"Downloading {model_id} to {target_dir} (this may take a while)...", flush=True)
     
-    # Enable fast transfer
+    # Enable fast transfer if not already set
     os.environ["HF_HUB_ENABLE_HF_TRANSFER"] = "1"
     
     snapshot_download(
         repo_id=model_id,
-        local_dir=local_dir,
-        ignore_patterns=["*.msgpack", "*.bin", "*.h5", "*.tflite", "*.ot"], 
+        local_dir=target_dir,
+        ignore_patterns=["*.msgpack", "*.bin", "*.h5", "*.tflite", "*.ot"],
+        max_workers=8 # Speed up download if possible
     )
     print("Download complete.", flush=True)
 
