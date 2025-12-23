@@ -1,0 +1,9 @@
+runpod
+torch
+git+https://github.com/huggingface/diffusers.git
+transformers
+accelerate
+sentencepiece
+huggingface_hub
+opencv-python
+imageio[ffmpeg]
