@@ -10,6 +10,10 @@ import imageio
 from io import BytesIO
 import requests
 from PIL import Image
+try:
+    from src import builder
+except ImportError:
+    import builder
 
 def download_image(url):
     response = requests.get(url)
@@ -26,6 +30,8 @@ class Handler:
     def __init__(self):
         self.pipe = None
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        # Ensure model is downloaded
+        builder.download_model()
         self._load_model()
 
     def _load_model(self):

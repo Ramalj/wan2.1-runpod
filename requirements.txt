@@ -7,3 +7,4 @@ sentencepiece
 huggingface_hub
 opencv-python
 imageio[ffmpeg]
+hf_transfer
