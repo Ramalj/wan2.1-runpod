@@ -29,6 +29,9 @@ ENV HF_HUB_ENABLE_HF_TRANSFER=1
 # Copy application code
 COPY src/ .
 
+# Download models during build
+RUN python builder.py
+
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 
