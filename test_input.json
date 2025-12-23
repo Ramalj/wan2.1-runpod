@@ -1,0 +1,9 @@
+{
+  "input": {
+    "image": "https://raw.githubusercontent.com/CompVis/stable-diffusion/main/assets/stable-samples/img2img/sketch-mountains-input.jpg",
+    "prompt": "A breathtaking mountain landscape with clouds moving dynamically, cinematic lighting, 4k, high quality",
+    "negative_prompt": "low resolution, blurry, distorted, artifacts",
+    "seed": 12345,
+    "num_frames": 81
+  }
+}
