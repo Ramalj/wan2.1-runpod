@@ -1,5 +1,7 @@
 # Wan 2.1 I2V RunPod Serverless Worker
 
+[![Runpod](https://api.runpod.io/badge/Ramalj/wan2.1-runpod)](https://console.runpod.io/hub/Ramalj/wan2.1-runpod)
+
 This is a RunPod Serverless Worker for the **Wan 2.1 Image-to-Video (720p)** model. It supports generation of high-quality videos from images using natural language prompts.
 
 ## Features
