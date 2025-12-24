@@ -23,9 +23,8 @@ RUN pip install -r requirements.txt
 # Create cache directory for models
 RUN mkdir -p /models
 
-# Copy builder script and download weights
-COPY builder.py .
-RUN python builder.py
+# Enable HF Transfer
+ENV HF_HUB_ENABLE_HF_TRANSFER=1
 
 # Copy application code
 COPY src/ .
