@@ -1,5 +1,11 @@
+import sys
+print("--- CONTAINER STARTING ---", flush=True)
+
 import runpod
+import time
+print("Importing torch...", flush=True)
 import torch
+print("Importing diffusers...", flush=True)
 from diffusers import WanI2VPipeline
 from diffusers.utils import export_to_video
 import base64
@@ -10,10 +16,14 @@ import imageio
 from io import BytesIO
 import requests
 from PIL import Image
+
 try:
+    print("Importing builder...", flush=True)
     from src import builder
 except ImportError:
     import builder
+
+print("--- IMPORTS COMPLETE ---", flush=True)
 
 def download_image(url):
     response = requests.get(url)

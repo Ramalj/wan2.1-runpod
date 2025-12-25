@@ -6,7 +6,7 @@
                 "text": "Hello world",
                 "language": "en"
             },
-            "timeout": 10000
+            "timeout": 1800000
         }
     ],
     "config": {
