@@ -23,14 +23,15 @@ RUN pip install -r requirements.txt
 # Create cache directory for models
 RUN mkdir -p /models
 
-# Enable HF Transfer
+# Enable HF Transfer and set cache directory
 ENV HF_HUB_ENABLE_HF_TRANSFER=1
+ENV HF_HOME=/models
 
 # Copy application code
 COPY src/ .
 
-# Download models during build
-RUN python builder.py
+# Download models during build (Disabled to avoid timeout, will download on first run)
+# RUN python builder.py
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
